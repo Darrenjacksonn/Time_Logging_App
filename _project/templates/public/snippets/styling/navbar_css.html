@@ -1,0 +1,45 @@
+<style type="text/css">
+    
+    /* Nice Underlining Stuff */
+    
+        /* Individual parts (Items) */
+        
+        .navbar ul li {
+            list-style:none;
+            display: inline-block;
+            margin: 20px 20px 20px 0;
+            font-size: 20px;
+            font-weight: bold;
+            height: center;
+            text-transform: uppercase;
+            position: relative;
+        }
+    
+    /* refering to the links - removing ugly link look */
+    
+        .line {
+            text-decoration: none!important;
+            color: black; 
+            position: relative;
+        }
+    
+        /* Adds the line underneath */
+    
+        .line::after {
+            content: '';
+            height: 4px;
+            width: 0%;
+            background: #DB706D;
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            transition: 0.5s;
+        } 
+    
+        .line:hover::after {
+            width: 100%;
+        }
+    
+    
+    
+    </style>

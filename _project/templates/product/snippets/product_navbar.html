@@ -1,0 +1,43 @@
+{% url 'dashboard' as dashboard_url %}
+{% url 'input' as input_url' %}
+{% url 'reports' as reports_url' %}
+
+
+
+
+<html>
+    <body>
+        
+        <div class = "container-fluid"> 
+            <div class = "row">
+
+                <div class = "col-2"> 
+                    {% if request.path == dashboard_url %}              <h4 class = "p-2 text-center"> Dashboard </h4>
+                    {% else %} <a href = "{% url 'dashboard' %}">       <h4 class = "p-2 text-center"> Dashboard </h4>  </a> {% endif %}
+                </div>
+
+                <div class="col-2"> 
+                    {% if request.path == input_url %}                  <h4 class = "p-2 text-center"> Input </h4>
+                    {% else %} <a href = "{% url 'input' %}">           <h4 class = "p-2 text-center"> Input </h4>      </a> {% endif %}
+                    
+                </div>
+
+                <div class="col-2"> 
+                    {% if request.path == reports_url %}                <h4 class = "p-2 text-center"> Reports </h4>
+                    {% else %} <a href = "{% url 'reports' %}">         <h4 class = "p-2 text-center"> Reports </h4>    </a> {% endif %}
+                </div>
+            
+                <div class="col-4"> 
+                </div>
+
+                <div class = "col-2"> 
+                    <form action = "{% url 'logout' %}" method = "post">
+                        {% csrf_token %}
+                        <button type = "submit"> Logout </button>
+                    </form>
+                </div>
+                
+        </div>
+        
+    </body>
+</html>
