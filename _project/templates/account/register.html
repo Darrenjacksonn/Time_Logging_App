@@ -1,4 +1,4 @@
-{%extends 'public/public_base.html'%}
+{%extends 'public/_public_base.html'%}
 
 {% block title %} Register {% endblock %}
 
@@ -9,20 +9,48 @@
 <div class = "container">
     <div class = "row">
         <div class = "col-12">
-            <h1 class = "text-center"> Register Below </h1>
+            <h1 class = "text-center pb-5 pt-1"> Register Below </h1>
         </div>
     </div>
     <div class = "row">
         <div class = "col">
-            <form method = "POST">
+
+            <form method="POST">
                 {% csrf_token %}
-                {{form.as_p}}
-                <p class = "text-center"> <button type = "submit" class = "btn btn-primary"> Register </button> </p>
+
+                {% for field in form %}
+                    <div class="row justify-content-center m-4">
+                        <div class = "col-3">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        </div>
+                        <div class = "col-3">
+                            {{ field }}
+                        </div>
+                    </div>
+                    {% if field.help_text %}
+                        <div class = "row justify-content-center">
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        </div>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                
+                {% endfor %}
+                <div class = "row justify-content-center mt-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
+            
+
+
+
         </div>
     </div>
 
-    <div class = "row">
+    <div class = "row pt-4">
         <div class = "col-12">
             <p class = "text-center"> Already have an account? <a href = "{% url 'login' %}"> Login </a> </p>
         </div>
@@ -31,3 +59,12 @@
 </div>
 
 {% endblock %} 
+
+
+{% comment %}
+<form method = "POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <p class = "text-center"> <button type = "submit" class = "btn btn-primary"> Register </button> </p>
+</form>
+{% endcomment %}
