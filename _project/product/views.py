@@ -29,7 +29,7 @@ def input_screen_view(request):
     form = ActionForm(request.POST or None)
 
     # If a button has been pressed
-    if request.method == 'POST' and 'add_action' in request.POST:
+    if request.method == 'POST':
         if form.is_valid():
             action = form.save(commit = False)
             action.user = request.user
@@ -40,13 +40,14 @@ def input_screen_view(request):
     return render(request, 'product/input.html', {'actions' : user_actions, 'form': form})
 
 
+
+
 def delete_action_view(request, action_id):
     action = get_object_or_404(Action, id = action_id, user = request.user)
-    if request.method == 'POST' and 'delete_action' in request.POST:
+    if request.method == 'POST':
         action.delete()
         return redirect(reverse('input'))
-    else:
-        return redirect('input')
+    return redirect('input')
 
 
 
