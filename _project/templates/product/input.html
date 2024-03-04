@@ -2,12 +2,41 @@
 
 {% block title %} Input {% endblock %}
 
-{% block page_heading %} Welcome to the Input Page {% endblock page_heading %}
+{% block page_heading %}  {% endblock page_heading %}
 
 {%block content %}
 
-<div> 
-    Welcome to the input page, brah
+ 
+<div class = "container">
+    <div class = "row justify-content-center">
+            <h2 class = "pb-5 pt-1"> Your tasks </h2>
+    </div>
+
+    <div class = "row justify-content-center">
+        {% for action in actions %}
+                <div class = "text-center col-12">
+                    {{ action.name }}
+                    <form action = "{% url 'input_delete_action' action.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" name = "delete_action" class="btn btn-danger">Delete</button>
+                </div>
+        {% empty %}
+            <div class = "text-center col-12">
+                <p> No tasks yet, create one below </p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class = "row justify-content-center">
+        <form method="POST">
+            {% csrf_token %}
+                <label class = mx-2 for="{{ field.id_for_label }}">Create new Task</label> {{ form.name }}
+                <button type="submit" name = "add_action" class="btn">Submit</button>
+        </form>
+    </div>
+
+
+           
 </div>
 
 {% endblock %}
