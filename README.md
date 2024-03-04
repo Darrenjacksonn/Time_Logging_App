@@ -1,2 +1,3 @@
 # Django_Website_Template
-A time logging application.
+
+A productivity enhancing, time logging application.
