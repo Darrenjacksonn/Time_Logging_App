@@ -3,8 +3,8 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from .forms import ActionForm
-from .models import Action
-#from django.http import HttpResponseRedirect
+from .models import Action, ActionTime
+from django.utils import timezone
 
 
 def NaN_screen_view(request):
@@ -13,7 +13,30 @@ def NaN_screen_view(request):
 @login_required
 @never_cache
 def dashboard_screen_view(request):
-    return render(request, 'product/dashboard.html')
+
+    user_actions = Action.objects.filter(user = request.user) if request.user.is_authenticated else []
+
+    return render(request, 'product/dashboard.html', {'actions' : user_actions})
+
+
+def start_action(request, action_id):
+
+    if ActionTime.objects.filter(action__user = request.user, is_active = True).exists():
+        pass
+    else:
+        action = Action.objects.get(id = action_id)
+        ActionTime.objects.create(action = action, start_time = timezone.now(), is_active = True)
+    return redirect(reverse('dashboard'))
+
+def stop_action(request, action_time_id):
+    action_time = ActionTime.objects.get(id = action_time_id, action__user = request.user, is_active = True)
+    action_time.stop_time = timezone.now()
+    action_time.is_active = False
+    action_time.save()
+    return redirect(reverse('dashboard'))
+
+
+
 
 
 
@@ -39,10 +62,7 @@ def input_screen_view(request):
 
     return render(request, 'product/input.html', {'actions' : user_actions, 'form': form})
 
-
-
-
-def delete_action_view(request, action_id):
+def delete_action(request, action_id):
     action = get_object_or_404(Action, id = action_id, user = request.user)
     if request.method == 'POST':
         action.delete()

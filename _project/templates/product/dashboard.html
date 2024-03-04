@@ -6,8 +6,36 @@
 
 {%block content %}
 
+<div class = "container">
+    <div class = "row justify-content-center">
+            <h2 class = "pb-5 pt-1"> Your Actions </h2>
+    </div>
+
+    <div class = "row">
+        {% for action in actions %}
+                    <div class = "col-12 text-center">
+                        <h5> {{ action.name }} </h5>
+                    </div>
+        {% empty %}
+            <div class = "text-center col-12">
+                <p> No tasks yet, create one in the input section </p>
+            </div>
+        {% endfor %}
+    </div>
+     
+</div>
 <div> 
-    Welcome to the Dashboard, brah
+    {% for action in actions %}
+    <div class="action {% if action.is_active %}active{% endif %}">
+        {{ action.name }}
+        {% if not action.is_active %}
+            <a href="{% url 'start_action' action.id %}">Start</a>
+        {% else %}
+            <a href="{% url 'stop_action' action.id %}">Stop</a>
+        {% endif %}
+    </div>
+{% endfor %}
+
 </div>
 
 {% endblock %}

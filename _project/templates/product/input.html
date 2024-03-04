@@ -14,17 +14,18 @@
 
     <div class = "row">
         {% for action in actions %}
-                <div class = "col-5 py-2"></div>
+                <div class = "col-4 py-2"></div>
                     <div class = "col-1 py-2">
                         <h5> {{ action.name }} </h5>
                     </div>
+                    <div class = "col-2 py-2"></div>
                     <div class = "col-1 py-2">
                         <form action = "{% url 'input_delete_action' action.id %}" method="POST" novalidate>
                             {% csrf_token %}
                             <button type="submit" value = "delete_action" class="btn btn-danger">Delete</button>
                         </form>
                     </div>
-                    <div class = "col-5 py-2"></div>
+                    <div class = "col-4 py-2"></div>
         {% empty %}
             <div class = "text-center col-12">
                 <p> No tasks yet, create one below </p>

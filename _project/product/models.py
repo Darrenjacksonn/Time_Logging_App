@@ -11,11 +11,15 @@ class Action(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['user'] 
 
 class ActionTime(models.Model):
     action = models.ForeignKey(Action, on_delete=models.CASCADE) # Links it with the action
     start_time = models.DateTimeField()
-    stop_time = models.DateTimeField()
+    stop_time = models.DateTimeField(null = True, blank = True)
+    is_active = models.BooleanField(default=False) 
 
     def __str__(self):
         return f"{self.action.name} recorded from {self.start_time} to {self.stop_time}"
