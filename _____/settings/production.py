@@ -25,7 +25,7 @@ DATABASES = {
 '''
 
 
-ROOT_URLCONF = '_____.urls'
+
 
 
 # Security settings
