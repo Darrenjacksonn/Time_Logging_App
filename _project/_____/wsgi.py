@@ -11,6 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', '_____.settings')
+settings_module = "_____.settings.production" if 'time-logging-application' in os.environ else '_____.settings.base' # WEBSITE_HOSTNAME
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
 application = get_wsgi_application()

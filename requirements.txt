@@ -4,3 +4,9 @@
 django == 5.0.1
 
 python-dotenv == 1.0.1
+
+# for PostgreSQL
+psycopg2==2.9.9
+
+# for loading static files without hosting them sepeartely
+whitenoise==6.6.0
