@@ -3,7 +3,7 @@ import os
 
 
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] 
 
