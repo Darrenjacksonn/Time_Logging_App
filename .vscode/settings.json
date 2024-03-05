@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/b8c04d1f-ea47-4c11-ad9f-f18d68c51e57/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/time-logging-app-bro",
+  "appService.deploySubpath": "."
+}
