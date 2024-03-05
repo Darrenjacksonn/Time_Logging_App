@@ -39,12 +39,14 @@ INSTALLED_APPS = [
     'product',
 
     # django apps
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'hello_azure',
 ]
 
 MIDDLEWARE = [
