@@ -5,7 +5,7 @@ import os
 
 DEBUG = False
 
-ALLOWED_HOSTS = [os.environ['time-logging-application.azurewebsites.net']] # WEBSITE_HOSTNAME
+ALLOWED_HOSTS = [os.environ['productivity-time-logging-app.azurewebsites.net']] # WEBSITE_HOSTNAME
 
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -31,4 +31,4 @@ DATABASES = {
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['time-logging-application.azurewebsites.net']] # WEBSITE_HOSTNAME
+CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['productivity-time-logging-app.azurewebsites.net']] # WEBSITE_HOSTNAME

@@ -11,7 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-settings_module = "_____.settings.production" if 'time-logging-application.azurewebsites.net' in os.environ else '_____.settings.base' # WEBSITE_HOSTNAME
+settings_module = "_____.settings.production" if 'productivity-time-logging-app.azurewebsites.net' in os.environ else '_____.settings.base' # WEBSITE_HOSTNAME
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
