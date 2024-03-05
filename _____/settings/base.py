@@ -29,6 +29,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 DATABASE_URL = os.getenv('DATABASE_URL')
 
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] 
+
 
 # Application definition
 
