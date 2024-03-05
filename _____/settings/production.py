@@ -5,7 +5,7 @@ import os
 
 DEBUG = False
 
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAMEt']] 
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] 
 
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

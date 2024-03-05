@@ -11,7 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-settings_module = "_____.settings.production" if 'WEBSITE_HOSTNAMEt' in os.environ else '_____.settings.base' 
+settings_module = "_____.settings.production" if 'WEBSITE_HOSTNAME' in os.environ else '_____.settings.base' 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
