@@ -10,7 +10,7 @@ ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-'''
+
 connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
 parameters = {pair.split('=')[0] : pair.split('=')[1] for pair in connection_string.split(';') if pair}
 DATABASES = {
@@ -22,9 +22,9 @@ DATABASES = {
         'PASSWORD' : parameters['password'],
     }
 }
-'''
 
 
+#cnx = psycopg2.connect(user="dazz_o_matic", password="{your_password}", host="logarhythm-db.postgres.database.azure.com", port=5432, database="postgres")
 
 
 
