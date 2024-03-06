@@ -84,13 +84,29 @@ WSGI_APPLICATION = '_____.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+'''
+
+#connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+#parameters = {pair.split('=')[0] : pair.split('=')[1] for pair in connection_string.split(';') if pair}
+DATABASES = {
+    'default': {
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME' : 'django',
+        'HOST' : "logarhythm-db.postgres.database.azure.com",
+        'USER' : 'dazz_o_matic',
+        'PASSWORD' : '1522Chiraq8709!',
+        'PORT' : '5432',
+    }
+}
+
+# Server=logarhythm-db.postgres.database.azure.com;Database=postgres;Port=5432;User Id=dazz_o_matic;Password={your_password};Ssl Mode=Require;
 
 AUTH_USER_MODEL = 'account.CustomUser'
 LOGIN_URL = '/account/login/'

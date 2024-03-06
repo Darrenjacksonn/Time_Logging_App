@@ -10,7 +10,7 @@ ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
+'''
 connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
 parameters = {pair.split('=')[0] : pair.split('=')[1] for pair in connection_string.split(';') if pair}
 DATABASES = {
@@ -20,6 +20,18 @@ DATABASES = {
         'HOST' : parameters['host'],
         'USER' : parameters['user'],
         'PASSWORD' : parameters['password'],
+        'PORT' : '5432',
+    }
+}
+'''
+DATABASES = {
+    'default': {
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME' : 'django',
+        'HOST' : "logarhythm-db.postgres.database.azure.com",
+        'USER' : 'dazz_o_matic',
+        'PASSWORD' : '1522Chiraq8709!',
+        'PORT' : '5432',
     }
 }
 
